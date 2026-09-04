@@ -1,0 +1,32 @@
+[
+    {
+        "username": "tcruise",
+        "console_access": true,
+        "mfa_enabled": true,
+        "admin": true
+    },
+    {
+        "username": "ldicarprio",
+        "console_access": true,
+        "mfa_enabled": false,
+        "admin": true
+    },
+    {
+        "username": "mfreeman",
+        "console_access": true,
+        "mfa_enabled": false,
+        "admin": false
+    },
+    {
+        "username": "aeinstein",
+        "console_access": false,
+        "mfa_enabled": false,
+        "admin": false
+    },
+    {
+        "username": "dlipa",
+        "console_access": true,
+        "mfa_enabled": true,
+        "admin": false
+    }
+]
