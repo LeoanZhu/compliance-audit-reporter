@@ -1,0 +1,77 @@
+[
+    {
+        "name": "app-assets-prod",
+        "acl": "private",
+        "public_access_block": {
+            "BlockPublicAcls": true,
+            "BlockPublicPolicy": true,
+            "IgnorePublicAcls": true,
+            "RestrictPublicBuckets": true
+        },
+        "encryption": {
+            "enabled": true,
+            "type": "AES256"
+        },
+        "logging_enabled": true
+    },
+    {
+        "name": "app-wrostcase-prod",
+        "acl": "public-read-write",
+        "public_access_block": {
+            "BlockPublicAcls": false,
+            "BlockPublicPolicy": false,
+            "IgnorePublicAcls": false,
+            "RestrictPublicBuckets": false
+        },
+        "encryption": {
+            "enabled": true,
+            "type": "AES256"
+        },
+        "logging_enabled": true
+    },
+    {
+        "name": "app-encryptioncheck-prod",
+        "acl": "private",
+        "public_access_block": {
+            "BlockPublicAcls": true,
+            "BlockPublicPolicy": true,
+            "IgnorePublicAcls": true,
+            "RestrictPublicBuckets": true
+        },
+        "encryption": {
+            "enabled": false
+        },
+        "logging_enabled": true
+    },
+    {
+        "name": "app-loggingcheck-prod",
+        "acl": "private",
+        "public_access_block": {
+            "BlockPublicAcls": true,
+            "BlockPublicPolicy": true,
+            "IgnorePublicAcls": true,
+            "RestrictPublicBuckets": true
+        },
+        "encryption": {
+            "enabled": true,
+            "type": "AES256"
+        },
+        "logging_enabled": false
+    },
+    {
+        "name": "app-partialcase-prod",
+        "acl": "private",
+        "public_access_block": {
+            "BlockPublicAcls": false,
+            "BlockPublicPolicy": true,
+            "IgnorePublicAcls": true,
+            "RestrictPublicBuckets": true
+        },
+        "encryption": {
+            "enabled": true,
+            "type": "AES256"
+        },
+        "logging_enabled": true
+    }
+
+]
