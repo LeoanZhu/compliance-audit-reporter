@@ -1,0 +1,30 @@
+[
+    {
+        "key_id": "AKIA_TCRUISE_01",
+        "user": "tcruise",
+        "created_date": "2026-08-20",
+        "last_used_date": "2026-09-04",
+        "active": true
+    },
+    {
+        "key_id": "AKIA_DLIPA_01",
+        "user": "dlipa",
+        "created_date": "2026-01-20",
+        "last_used_date": "2026-09-02",
+        "active": true
+    },
+    {
+        "key_id": "AKIA_MFREEMAN_01",
+        "user": "mfreeman",
+        "created_date": "2026-02-20",
+        "last_used_date": null,
+        "active": true
+    },
+    {
+        "key_id": "AKIA_AEINSTEIN_01",
+        "user": "aeinstein",
+        "created_date": "2026-02-20",
+        "last_used_date": null,
+        "active": false
+    }
+]
