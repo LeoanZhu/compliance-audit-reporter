@@ -15,7 +15,7 @@
         "logging_enabled": true
     },
     {
-        "name": "app-wrostcase-prod",
+        "name": "app-worst-case-prod",
         "acl": "public-read-write",
         "public_access_block": {
             "BlockPublicAcls": false,
