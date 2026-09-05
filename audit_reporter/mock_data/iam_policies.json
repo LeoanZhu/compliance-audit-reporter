@@ -1,0 +1,68 @@
+[
+    {
+        "policy_name": "s3-read-only-app-assets",
+        "attached_to": ["mfreeman", "dlipa"],
+        "statements": [
+            {
+                "effect": "Allow",
+                "action": ["s3:GetObject", "s3:ListBucket"],
+                "resource": ["arn:aws:s3:::app-assets-prod/*"]
+            }
+        ]
+    },
+    {
+        "policy_name": "s3-all-access-assets",
+        "attached_to": ["mfreeman", "dlipa"],
+        "statements": [
+            {
+                "effect": "Allow",
+                "action": ["*"],
+                "resource": ["*"]
+            }
+        ]
+    },
+    {
+        "policy_name": "s3-specific-all-access-assets",
+        "attached_to": ["mfreeman", "dlipa"],
+        "statements": [
+            {
+                "effect": "Allow",
+                "action": ["s3:*"],
+                "resource": ["arn:aws:s3:::app-assets-prod/*"]
+            }
+        ]
+    },
+    {
+        "policy_name": "s3-denied-access-assets",
+        "attached_to": ["mfreeman", "dlipa"],
+        "statements": [
+            {
+                "effect": "Deny",
+                "action": ["s3:GetObject", "s3:ListBucket"],
+                "resource": ["arn:aws:s3:::app-assets-prod/*"]
+            }
+        ]
+    },
+    {
+        "policy_name": "s3-multi-user-assets",
+        "attached_to": ["mfreeman", "dlipa", "ldicarprio", "tcruise"],
+        "statements": [
+            {
+                "effect": "Allow",
+                "action": ["s3:GetObject", "s3:ListBucket"],
+                "resource": ["arn:aws:s3:::app-assets-prod/*"]
+            }
+        ]
+    },
+    {
+        "policy_name": "s3-ec2-iam-sneaky-broad",
+        "attached_to": ["mfreeman"],
+        "statements": [
+            {
+                "effect": "Allow",
+                "action": ["s3:*", "ec2:*", "iam:*"],
+                "resource": ["*"]
+            }
+        ]
+    }
+]
