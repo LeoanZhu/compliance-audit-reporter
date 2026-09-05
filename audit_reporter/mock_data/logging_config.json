@@ -1,0 +1,7 @@
+{
+    "cloudtrail_enabled": true,
+    "cloudtrail_multi_region": false,
+    "config_recorder_enabled": true,
+    "guardduty_enabled": false,
+    "vpc_flow_logs_enabled": true
+}
