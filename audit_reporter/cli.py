@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 from . import report, history
+from datetime import datetime, timezone
 
 def cmd_scan(args):
     mock_dir = Path(args.mock_dir)
@@ -26,6 +27,20 @@ def cmd_scan(args):
     print(f"  Resolved: {len(diff['resolved'])}")
     print(f"  Persisting: {len(diff['persisting'])}")
 
+def cmd_history(args):
+    state_path = Path(args.state_path)
+    state = history.load_state(state_path)
+    
+    now = datetime.now(timezone.utc)
+    
+    print(f"Currently tracked findings: {len(state['findings_by_id'])}")
+    print()
+
+    for finding in state["findings_by_id"].values():
+        first_detected = datetime.fromisoformat(finding["first_detected"])
+        days_open = (now - first_detected).days
+        print(f"[{finding['check_type']}] {finding['resource_id']} — open {days_open} day(s)")
+
 def main(): 
     parser = argparse.ArgumentParser(prog="audit-reporter")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -36,6 +51,10 @@ def main():
     scan_parser.add_argument("--out-dir", default="output")
     scan_parser.add_argument("--state-path", default="state.json")
     scan_parser.set_defaults(func=cmd_scan)
+
+    history_parser = subparsers.add_parser("history", help="Show currently tracked findings")
+    history_parser.add_argument("--state-path", default="state.json")
+    history_parser.set_defaults(func=cmd_history)
 
     args = parser.parse_args()
     args.func(args)
