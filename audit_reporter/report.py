@@ -60,7 +60,7 @@ def build_report(mock_dir, run_id=None):
 
     now = datetime.now(timezone.utc)
     return {
-        "run_id": run_id or now.strftime("%Y%m%dT%H%M%SZ"),
+        "run_id": run_id or now.strftime("%Y%m%dT%H%M%S%fZ"),
         "generated_at": now.isoformat(),
         "mock_dir": str(mock_dir),
         "summary": summary,
