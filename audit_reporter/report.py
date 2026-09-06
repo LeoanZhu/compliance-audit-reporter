@@ -66,3 +66,50 @@ def build_report(mock_dir, run_id=None):
         "summary": summary,
         "findings": findings,
     }
+
+def render_markdown(report):
+    lines = []
+    lines.append(f"# Compliance Audit Report")
+    lines.append(f"**Run ID:** {report['run_id']}")
+    lines.append(f"**Generated:** {report['generated_at']}")
+    lines.append("")
+
+    lines.append("## Summary")
+    lines.append("")
+    for severity in SEVERITY_ORDER:
+        count = report["summary"]["by_severity"][severity]
+        lines.append(f"- **{severity.capitalize()}:** {count}")
+    lines.append("")
+
+    for category in CONTROL_CATEGORIES:
+        count = report["summary"]["by_category"][category]
+        name = CONTROL_CATEGORIES[category]["name"]
+        lines.append(f"- **{name}:** {count}")
+    lines.append("")
+
+    lines.append("## Findings")
+    lines.append("")
+    last_severity = None
+    for f in report["findings"]:
+        if f["severity"] != last_severity:
+            lines.append(f"### {f['severity'].capitalize()}")
+            lines.append("")
+            last_severity = f["severity"]
+
+        cat = CONTROL_CATEGORIES[f["control_category"]]
+        cat_label = f"{cat['name']} ({', '.join(cat['control_refs'])})"
+
+        lines.append(f"**[{cat_label}] {f['title']}** — `{f['resource_id']}`")
+        lines.append(f"- **Issue:** {f['description']}")
+        lines.append(f"- **Remediation:** {f['remediation']}")
+        lines.append("")
+
+    return "\n".join(lines)
+
+def save_report(report, markdown, out_dir):
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    md_path = out_dir / f"report_{report['run_id']}.md"
+    with open(md_path, "w") as f:
+        f.write(markdown)
+    return md_path

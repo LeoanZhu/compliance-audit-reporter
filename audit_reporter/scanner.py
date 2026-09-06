@@ -16,7 +16,7 @@ def check_public_buckets(s3_buckets):
                 "resource_type": "s3_bucket",
                 "control_category": category,
                 "severity": severity,
-                "title": "Access control list is public and public access blocks are not on.",
+                "title": "Public S3 Bucket",
                 "description": f"Bucket '{bucket['name']}' has ACL '{bucket['acl']}' and is not fully protected by Block Public Access",
                 "remediation": "Need to turn on all public access blocks"
             })
